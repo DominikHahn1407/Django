@@ -1,0 +1,38 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Books</h2>
+    <a class="btn btn-primary" href="{% url 'book_add' %}">Add Book</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>BNR</th>
+            <th>Title</th>
+            <th>Available</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.bnr }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.available }}</td>
+            <td>{{ book.timestamp }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="{% url 'book_edit' book.pk %}">Edit</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'book_delete' book.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No books found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

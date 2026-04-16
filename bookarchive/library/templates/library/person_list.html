@@ -1,0 +1,36 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Persons</h2>
+    <a class="btn btn-primary" href="{% url 'person_add' %}">Add Person</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>PID</th>
+            <th>Surename</th>
+            <th>Birthdate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+        <tr>
+            <td>{{ person.pid }}</td>
+            <td>{{ person.surename }}</td>
+            <td>{{ person.birthdate }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="{% url 'person_edit' person.pk %}">Edit</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'person_delete' person.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No persons found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">Library Management System</h1>
+    <p class="lead">Manage books, persons, and loans.</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a class="btn btn-primary" href="{% url 'book_list' %}">Manage Books</a>
+        <a class="btn btn-success" href="{% url 'person_list' %}">Manage Persons</a>
+        <a class="btn btn-warning" href="{% url 'loan_list' %}">Manage Loans</a>
+    </div>
+</div>
+{% endblock %}
